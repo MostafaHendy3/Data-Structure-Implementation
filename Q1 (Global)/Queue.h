@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "global.h"
 
-#if LIMITED_MEMORY  == 1
+#if LIMITED_MEMORY  == LinkedBased
 typedef struct queuenode
 {
     QueueEntry e;

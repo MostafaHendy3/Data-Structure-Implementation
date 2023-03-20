@@ -1,7 +1,7 @@
 #include "Queue.h"
 #include <stdio.h>
 
-#if LIMITED_MEMORY  == 1
+#if LIMITED_MEMORY  == LinkedBased
 void CreateQueue(Queue *pq)
 {
     pq->rear = NULL;

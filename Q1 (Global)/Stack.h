@@ -1,7 +1,7 @@
 #ifndef Stack_H
 #define Stack_H
 #include "global.h"
-#if LIMITED_MEMORY  == 1
+#if LIMITED_MEMORY  == LinkedBased
 typedef struct stackNode
 {
    StackEntry entry;

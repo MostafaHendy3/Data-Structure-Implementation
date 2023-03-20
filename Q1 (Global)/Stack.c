@@ -2,7 +2,7 @@
 #include "Stack.h"
 #include <stdlib.h>
 
-#if LIMITED_MEMORY  == 1
+#if LIMITED_MEMORY  == LinkedBased
 void CreateStack(Stack *ps)
 {
     ps->top = NULL;
