@@ -1,13 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define QueueEntry int
 #define MaxQueue 4
 
 typedef struct queuenode{
     QueueEntry e;
-    QueueNode * next;
+    struct queuenode * next;
 }QueueNode;
 
-typedef struct  Q
+typedef struct Q
 {
     QueueNode * front;
     QueueNode * rear;
