@@ -68,7 +68,3 @@ void StackTraverse(Stack *ps,void(*pf)(StackEntry))
 int StackSize(Stack * ps){
     return ps->size;
 }
-
-StackEntry StackSum(Stack*ps){
-    
-}
