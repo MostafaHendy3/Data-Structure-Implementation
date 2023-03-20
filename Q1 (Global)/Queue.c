@@ -1,7 +1,7 @@
 #include "Queue.h"
 #include <stdio.h>
 
-#if LimitedMemory == 1
+#if LIMITED_MEMORY  == 1
 void CreateQueue(Queue *pq)
 {
     pq->rear = NULL;
@@ -81,14 +81,14 @@ void CreateQueue(Queue * pq){
 }
 
 void Append(Queue * pq,QueueEntry e){
-    pq->rear= (pq->rear++)%MaxQueue;
+    pq->rear= (pq->rear+1)%MaxQueue;
     pq->entry[pq->rear]=e; 
     pq->size++;
 }
 
 QueueEntry serve(Queue * pq){
     QueueEntry e = pq->entry[pq->front];
-    pq->front =(pq->front++)%MaxQueue;
+    pq->front =(pq->front+1)%MaxQueue;
     pq->size--;
     return e;
 }
@@ -112,8 +112,7 @@ void TraverseQueue(Queue *pq,void(*pf)(QueueEntry)){
     for (int i = pq->front,s=0; s<pq->size; s++)
     {
         (*pf)(pq->entry[i]);
-        i=(i++)%MaxQueue;
+        i=(i+1)%MaxQueue;
     }
-    
 }
 #endif

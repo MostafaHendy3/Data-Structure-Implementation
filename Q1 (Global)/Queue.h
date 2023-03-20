@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "global.h"
 
-#if LimitedMemory == 1
+#if LIMITED_MEMORY  == 1
 typedef struct queuenode
 {
     QueueEntry e;
@@ -26,6 +26,7 @@ typedef struct queue
     QueueEntry entry[MaxQueue];
 } Queue;
 #endif
+
 void CreateQueue(Queue *);
 void Append(Queue *pq, QueueEntry e);
 QueueEntry serve(Queue *);
@@ -34,4 +35,5 @@ int QueueEmpty(Queue *pq);
 int QueueSize(Queue *pq);
 void ClearQueue(Queue *pq);
 void TraverseQueue(Queue *pq, void (*pf)(QueueEntry));
+
 #endif
