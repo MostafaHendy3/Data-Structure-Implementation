@@ -1,13 +1,13 @@
 #include "Queue.h"
 #include <stdio.h>
 
+#if LimitedMemory == 1
 void CreateQueue(Queue *pq)
 {
     pq->rear = NULL;
     pq->front = NULL;
     pq->size = 0;
 }
-
 void Append(Queue *pq, QueueEntry e)
 {
     QueueNode *pn = (QueueNode *)malloc(sizeof(QueueNode));
@@ -72,3 +72,48 @@ void TraverseQueue(Queue *pq, void (*pf)(QueueEntry))
         (*pf)(pn->e);
     }
 }
+#else
+void CreateQueue(Queue * pq){
+    pq->front=0;
+    pq->rear =-1;
+    pq->size=0;
+
+}
+
+void Append(Queue * pq,QueueEntry e){
+    pq->rear= (pq->rear++)%MaxQueue;
+    pq->entry[pq->rear]=e; 
+    pq->size++;
+}
+
+QueueEntry serve(Queue * pq){
+    QueueEntry e = pq->entry[pq->front];
+    pq->front =(pq->front++)%MaxQueue;
+    pq->size--;
+    return e;
+}
+int QueueFull(Queue *pq){
+    return pq->size == MaxQueue;
+}
+int QueueEmpty(Queue *pq){
+    return !pq->size; 
+}
+
+int QueueSize(Queue *pq){
+    return pq->size;
+}
+void ClearQueue(Queue * pq){
+    pq->front=0;
+    pq->rear =-1;
+    pq->size=0;
+}
+
+void TraverseQueue(Queue *pq,void(*pf)(QueueEntry)){
+    for (int i = pq->front,s=0; s<pq->size; s++)
+    {
+        (*pf)(pq->entry[i]);
+        i=(i++)%MaxQueue;
+    }
+    
+}
+#endif
