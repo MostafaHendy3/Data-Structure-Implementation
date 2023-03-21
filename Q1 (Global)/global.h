@@ -12,3 +12,6 @@ typedef ElementType QueueEntry;
 
 typedef ElementType StackEntry;
 #define MaxQueue MAX_SIZE
+
+typedef ElementType  ListEntry;
+#define MaxList MAX_SIZE
